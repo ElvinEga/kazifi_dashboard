@@ -1,4 +1,3 @@
-import React from "react";
 import MainDashboard from "../components/layout/MainDashboard";
 import { Button } from "@/components/ui/button";
 import { LayoutGrid, LayoutList } from "lucide-react";

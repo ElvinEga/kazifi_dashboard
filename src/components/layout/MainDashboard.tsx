@@ -1,4 +1,3 @@
-import React from "react";
 import Navbar from "../dashboard/NavBar";
 import { Toaster } from "@/components/ui/toaster";
 

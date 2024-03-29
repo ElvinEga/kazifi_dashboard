@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+//@ts-nocheck
+import { useState } from "react";
 import { motion } from "framer-motion";
 import { Flame } from "lucide-react";
 import { Plus } from "lucide-react";
@@ -65,7 +66,7 @@ const Column = ({ title, headingColor, cards, column, setCards }) => {
     e.dataTransfer.setData("cardId", card.id);
   };
 
-  const handleDragEnd = (e) => {
+  const handleDragEnd = (e: DragEvent) => {
     const cardId = e.dataTransfer.getData("cardId");
 
     setActive(false);

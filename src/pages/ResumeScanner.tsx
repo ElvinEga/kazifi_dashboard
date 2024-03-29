@@ -18,7 +18,7 @@ import JobDetails from "../components/tabs/JobDetails";
 import CoverLetter from "../components/tabs/CoverLetter";
 import ResumeUpload from "../components/tabs/Resume";
 import { Button } from "@/components/ui/button";
-import { ExternalLink, WandSparkles } from "lucide-react";
+import { ExternalLink } from "lucide-react";
 
 export function ResumeScanner() {
   return (
