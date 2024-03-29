@@ -31,7 +31,7 @@ export default function CoverLetter() {
             </div>
             <Button>
               <WandSparkles className="mr-2 h-4 w-4" />
-              AI Cover Maker
+              AI Cover Letter
             </Button>
           </div>
         </CardHeader>

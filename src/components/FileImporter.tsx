@@ -104,7 +104,7 @@ const FileImporter: React.FC<FileImporterProps> = ({
 
   return (
     <div>
-      <div className="flex justify-center items-center px-16 py-8 mt-4 text-center text-gray-500 bg-white rounded-lg border border-dashed border-slate-400 leading-[138%]">
+      <div className="flex justify-center items-center px-16 py-8 mt-4 text-center text-gray-500  rounded-lg border border-dashed border-slate-400 leading-[138%]">
         {selectedFile ? (
           <div>
             {/* Uploading File Content */}
@@ -238,7 +238,7 @@ const FileImporter: React.FC<FileImporterProps> = ({
                 Drag & drop your files here or
               </div>
 
-              <span className="text-xs text-primary">browse</span>
+              <span className="text-xs text-primary">Browse</span>
               <input
                 id="hs-pro-deuuf"
                 type="file"
