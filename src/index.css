@@ -64,6 +64,14 @@
     --input: 217.2 32.6% 17.5%;
     --ring: 212.7 26.8% 83.9%;
   }
+
+  .ul-padding {
+    padding-inline-start: 0.9rem;
+  }
+
+  .ul-padding-none {
+    padding-inline-start: 0;
+  }
 }
 
 @layer base {
@@ -76,4 +84,73 @@
 }
 body {
   font-family: "Geist Mono Variable";
+}
+
+.name {
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.profession {
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.contact {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.social-media {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.section-title {
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.content {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.sub-content {
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.i-bold {
+  font-weight: 700 !important;
+  font-style: italic;
+}
+@media print {
+  .exclude-print {
+    display: none;
+  }
+
+  .rm-padding-print {
+    padding: 0;
+  }
+
+  @page {
+    size: A4;
+    margin: 10mm;
+  }
+
+  .preview {
+    overflow-y: visible !important;
+  }
+
+  .preview::after {
+    content: "Created using https://atsresume.vercel.app/";
+    position: fixed;
+    bottom: 0;
+    right: 0;
+    opacity: 0.2;
+    font-size: small;
+    text-align: center;
+    z-index: -1;
+  }
 }
