@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ResumeBuilderContext } from "../../pages/ResumeBuilder";
+import { ResumeBuilderContext } from "@/components/context/ResumeBuilderContext";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 const PersonalInformation = ({}) => {
@@ -19,7 +19,7 @@ const PersonalInformation = ({}) => {
             placeholder="Full Name"
             name="name"
             className="pi"
-            value={resumeData.name}
+            value={resumeData?.name}
             onChange={handleChange}
           />
         </div>

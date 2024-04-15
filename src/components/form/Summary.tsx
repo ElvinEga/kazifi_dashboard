@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ResumeBuilderContext } from "../../pages/ResumeBuilder";
+import { ResumeBuilderContext } from "@/components/context/ResumeBuilderContext";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 const Summary = () => {

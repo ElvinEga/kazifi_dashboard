@@ -13,7 +13,7 @@ import DateRange from "../../lib/DateRange";
 import ContactInfo from "./ContactInfo";
 import React, { useContext } from "react";
 import dynamic from "next/dynamic";
-import { ResumeBuilderContext } from "../../pages/ResumeBuilder";
+import { ResumeBuilderContext } from "@/components/context/ResumeBuilderContext";
 import Language from "./Language";
 import Certification from "./Certification";
 import { Link } from "react-router-dom";

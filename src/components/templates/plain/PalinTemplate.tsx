@@ -13,10 +13,10 @@ import DateRange from "../../../lib/DateRange";
 import ContactInfo from "../../preview/ContactInfo";
 import React, { useContext } from "react";
 import dynamic from "next/dynamic";
-import { ResumeBuilderContext } from "../../../pages/ResumeBuilder";
 import Language from "../../preview/Language";
 import Certification from "../../preview/Certification";
 import { Link } from "react-router-dom";
+import { ResumeBuilderContext } from "@/components/context/ResumeBuilderContext";
 
 const DragDropContext = dynamic(
   () =>

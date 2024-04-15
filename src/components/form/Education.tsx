@@ -1,6 +1,6 @@
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
-import { ResumeBuilderContext } from "../../pages/ResumeBuilder";
+import { ResumeBuilderContext } from "@/components/context/ResumeBuilderContext";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 

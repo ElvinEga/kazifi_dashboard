@@ -1,7 +1,7 @@
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
-import { ResumeBuilderContext } from "../../pages/ResumeBuilder";
 import { Input } from "@/components/ui/input";
+import { ResumeBuilderContext } from "@/components/context/ResumeBuilderContext";
 const Certification = () => {
   const { resumeData, setResumeData } = useContext(ResumeBuilderContext);
   const skillType = "certifications";

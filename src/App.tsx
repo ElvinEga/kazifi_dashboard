@@ -7,10 +7,12 @@ import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
 import { LostPassword } from "./pages/LostPassword";
 import { ResumeScanner } from "./pages/ResumeScanner";
+import { ScannerResults } from "./pages/ScannerResults";
 import { JobTracker } from "./pages/JobTracker";
 import { ResumeBuilder } from "./pages/ResumeBuilder";
 import InterviewPage from "./pages/InterviewPage";
 import "react-quill/dist/quill.snow.css";
+import { ResumeBuilderProvider } from "./components/context/ResumeBuilderContext";
 
 function App() {
   return (
@@ -21,8 +23,22 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/sign-up" element={<Signup />} />
         <Route path="lost-password" element={<LostPassword />} />
-        <Route path="/resume-builder" element={<ResumeBuilder />} />
-        <Route path="/resume-scanner" element={<ResumeScanner />} />
+        <Route
+          path="/resume-builder"
+          element={
+            <ResumeBuilderProvider>
+              <ResumeBuilder />
+            </ResumeBuilderProvider>
+          }
+        />
+        <Route
+          path="/resume-scanner"
+          element={
+            <ResumeBuilderProvider>
+              <ScannerResults />
+            </ResumeBuilderProvider>
+          }
+        />
         <Route path="/job-tracker" element={<JobTracker />} />
         <Route path="/interview" element={<InterviewPage />} />
       </Routes>

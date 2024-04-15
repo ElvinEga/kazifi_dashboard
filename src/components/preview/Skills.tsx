@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { ResumeBuilderContext } from "../../pages/ResumeBuilder";
+import { ResumeBuilderContext } from "@/components/context/ResumeBuilderContext";
 
 const Skills = ({ title, skills }) => {
   const { resumeData, setResumeData } = useContext(ResumeBuilderContext);
