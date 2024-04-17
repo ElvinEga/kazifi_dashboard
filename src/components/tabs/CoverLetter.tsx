@@ -49,6 +49,7 @@ export default function CoverLetter() {
             </div>
           </div>
         </div>
+        {jobCoverLetter}
       </CardContent>
       <CardFooter className="border-t px-6 py-4">
         <Button>Update</Button>
