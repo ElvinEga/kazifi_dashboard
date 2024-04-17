@@ -1,7 +1,7 @@
+//@ts-nocheck
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
 import { ResumeBuilderContext } from "@/components/context/ResumeBuilderContext";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 const Projects = () => {

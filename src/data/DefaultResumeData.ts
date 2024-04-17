@@ -100,3 +100,55 @@ const DefaultResumeData = {
 };
 
 export default DefaultResumeData;
+
+export interface ResumeData {
+  name: string;
+  position: string;
+  contactInformation: string;
+  email: string;
+  address: string;
+  profilePicture: string;
+  socialMedia: SocialMedum[];
+  summary: string;
+  education: Education[];
+  workExperience: WorkExperience[];
+  projects: Project[];
+  skills: Skill[];
+  languages: string[];
+  certifications: string[];
+}
+
+export interface SocialMedum {
+  socialMedia: string;
+  link: string;
+}
+
+export interface Education {
+  school: string;
+  degree: string;
+  startYear: string;
+  endYear: string;
+}
+
+export interface WorkExperience {
+  company: string;
+  position: string;
+  description: string;
+  keyAchievements: string;
+  startYear: string;
+  endYear: string;
+}
+
+export interface Project {
+  name: string;
+  link: string;
+  description: string;
+  keyAchievements: string;
+  startYear: string;
+  endYear: string;
+}
+
+export interface Skill {
+  title: string;
+  skills: string[];
+}

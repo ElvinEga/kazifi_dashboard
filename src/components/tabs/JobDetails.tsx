@@ -28,7 +28,7 @@ export default function JobDetails() {
   const [jobName, setJobName] = useState("");
   const [companyName, setCompanyName] = useState("");
   const [jobUrl, setJobUrl] = useState("");
-  const [jobDetails, setJobDetails] = useState<LinkedinJob | null>(null);
+  const [jobDetails] = useState<LinkedinJob | null>(null);
   const handleScan = () => {
     const inputData = {
       jobDescription: jobDescription,
@@ -37,6 +37,7 @@ export default function JobDetails() {
       jobUrl: jobUrl,
     };
     // navigate("/scan", { state: inputData });
+    console.log(inputData);
   };
 
   const handleEditoChange = (html: string) => {

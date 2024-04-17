@@ -1,14 +1,18 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { ResumeBuilderContext } from "@/components/context/ResumeBuilderContext";
 
-const Skills = ({ title, skills }) => {
+const Skills = ({ title, skills }: { title: string; skills: [] }) => {
   const { resumeData, setResumeData } = useContext(ResumeBuilderContext);
 
-  const handleTitleChange = (e) => {
-    const newSkills = [...resumeData.skills];
-    newSkills.find((skillType) => skillType.title === title).title =
-      e.target.innerText;
-    setResumeData({ ...resumeData, skills: newSkills });
+  const handleTitleChange = (e: React.FocusEvent<HTMLInputElement>) => {
+    const newSkills = [...resumeData!.skills];
+    const foundSkill = newSkills.find((skillType) => skillType.title === title);
+    if (foundSkill) {
+      foundSkill.title = e.target.innerText;
+    }
+    if (setResumeData) {
+      setResumeData({ ...resumeData!, skills: newSkills });
+    }
   };
 
   return (

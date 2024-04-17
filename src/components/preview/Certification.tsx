@@ -1,6 +1,10 @@
-import React from "react";
-
-const Certification = ({ title, certifications }) => {
+const Certification = ({
+  title,
+  certifications,
+}: {
+  title: string;
+  certifications: string[];
+}) => {
   return (
     certifications.length > 0 && (
       <div>

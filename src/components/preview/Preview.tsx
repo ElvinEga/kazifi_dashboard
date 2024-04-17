@@ -1,3 +1,4 @@
+//@ts-nocheck
 import {
   FaGithub,
   FaLinkedin,
@@ -11,7 +12,7 @@ import { CgWebsite } from "react-icons/cg";
 import Skills from "./Skills";
 import DateRange from "../../lib/DateRange";
 import ContactInfo from "./ContactInfo";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import dynamic from "next/dynamic";
 import { ResumeBuilderContext } from "@/components/context/ResumeBuilderContext";
 import Language from "./Language";

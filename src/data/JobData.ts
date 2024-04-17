@@ -22,14 +22,35 @@ export interface ScoreData {
   email_present: boolean;
   phone_number_present: boolean;
   linkedin_profile_present: boolean;
-  education_match: boolean;
+  emails: string[];
+  phones: string[];
+  links: string[];
+  education_match: EducationMatch;
   job_title_match: boolean;
+  repetition: Repetition[];
+  cliche_words: ClicheWords;
   standard_sections_present: StandardSectionsPresent;
 }
 
 export interface WordCount {
   score: number;
   word_count: number;
+}
+
+export interface EducationMatch {
+  score: number;
+  qualifications: string[];
+  resume_qualifications: string[];
+}
+
+export interface Repetition {
+  count: number;
+  word: string;
+}
+
+export interface ClicheWords {
+  score: number;
+  cliches_found: string[];
 }
 
 export interface StandardSectionsPresent {

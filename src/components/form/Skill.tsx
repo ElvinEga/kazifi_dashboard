@@ -1,8 +1,9 @@
+//@ts-nocheck
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
 import { ResumeBuilderContext } from "@/components/context/ResumeBuilderContext";
 import { Input } from "@/components/ui/input";
-const Skill = ({ title }) => {
+const Skill = ({ title }: { title: string }) => {
   const { resumeData, setResumeData } = useContext(ResumeBuilderContext);
 
   // skills

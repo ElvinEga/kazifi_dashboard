@@ -1,3 +1,4 @@
+//@ts-nocheck
 import {
   FaGithub,
   FaLinkedin,
@@ -11,7 +12,7 @@ import { CgWebsite } from "react-icons/cg";
 import Skills from "../../preview/Skills";
 import DateRange from "../../../lib/DateRange";
 import ContactInfo from "../../preview/ContactInfo";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import dynamic from "next/dynamic";
 import Language from "../../preview/Language";
 import Certification from "../../preview/Certification";
@@ -40,7 +41,7 @@ const Draggable = dynamic(
   { ssr: false }
 );
 const PlainTemplate = () => {
-  const { resumeData, setResumeData, bgValue } =
+  const { resumeData, setResumeData, bgValue, handleContentChange } =
     useContext(ResumeBuilderContext);
 
   const icons = [
@@ -53,6 +54,32 @@ const PlainTemplate = () => {
     { name: "website", icon: <CgWebsite /> },
   ];
 
+  const handleEducation = (event, index) => {
+    const education = [...resumeData.education];
+    education[index][event.target.id] = event.target.textContent;
+    setResumeData({ ...resumeData, education: education });
+  };
+
+  const handleWorkExperience = (event, index) => {
+    const newworkExperience = [...resumeData.workExperience];
+    newworkExperience[index][event.target.id] = event.target.textContent;
+    setResumeData({ ...resumeData, workExperience: newworkExperience });
+  };
+  const handleWorkExperienceList = (event, index) => {
+    const newWorkExperience = [...resumeData.workExperience];
+    const updatedItem = { ...newWorkExperience[index] };
+    const updatedAchievements = Array.from(event.target.parentNode.children)
+      .map((liElement, i) => {
+        const textContent = liElement.textContent.trim();
+        return i === event.target.parentNode.children.length - 1
+          ? textContent
+          : textContent + "\n";
+      })
+      .join("");
+    updatedItem.keyAchievements = updatedAchievements;
+    newWorkExperience[index] = updatedItem;
+    setResumeData({ ...resumeData, workExperience: newWorkExperience });
+  };
   const onDragEnd = (result) => {
     const { destination, source } = result;
 
@@ -175,15 +202,37 @@ const PlainTemplate = () => {
           <div className="mx-auto grid gap-4">
             <div className="space-y-2 pt-6">
               <h2 className="text-2xl font-bold">Summary</h2>
-              <p className="content break-words">{resumeData.summary}</p>
+              <p
+                className="content break-words"
+                id="summary"
+                contentEditable
+                suppressContentEditableWarning
+                onBlur={(e) => handleContentChange(e)}
+              >
+                {resumeData.summary}
+              </p>
             </div>
             <div className="space-y-2">
               <h2 className="text-2xl font-bold">Education</h2>
               <div className="space-y-0.5">
                 {resumeData.education.map((item, index) => (
                   <div key={index} className="mb-1">
-                    <p className="text-base font-bold">{item.degree}</p>
-                    <p className="text-sm text-gray-500 dark:text-gray-400">
+                    <p
+                      className="text-base font-bold"
+                      id="degree"
+                      contentEditable
+                      suppressContentEditableWarning
+                      onBlur={(e) => handleEducation(e, index)}
+                    >
+                      {item.degree}
+                    </p>
+                    <p
+                      className="text-sm text-gray-500 dark:text-gray-400"
+                      id="school"
+                      contentEditable
+                      suppressContentEditableWarning
+                      onBlur={(e) => handleEducation(e, index)}
+                    >
                       {item.school}
                     </p>
                     <DateRange
@@ -226,15 +275,41 @@ const PlainTemplate = () => {
                             >
                               <div className="flex items-center justify-between">
                                 <div>
-                                  <p className="text-base font-bold">
+                                  <p
+                                    className="text-base font-bold editable"
+                                    contentEditable
+                                    suppressContentEditableWarning
+                                    id="position"
+                                    onBlur={(e) =>
+                                      handleWorkExperience(e, index)
+                                    }
+                                  >
                                     {item.position}
                                   </p>
-                                  <p className="content i-bold">
+                                  <p
+                                    className="content i-bold editable"
+                                    contentEditable
+                                    suppressContentEditableWarning
+                                    id="company"
+                                    onBlur={(e) =>
+                                      handleWorkExperience(e, index)
+                                    }
+                                  >
                                     {item.company}
                                   </p>
                                 </div>
                                 <div>
-                                  <p className="content">{item.location}</p>
+                                  <p
+                                    className="content editable"
+                                    contentEditable
+                                    suppressContentEditableWarning
+                                    id="location"
+                                    onBlur={(e) =>
+                                      handleWorkExperience(e, index)
+                                    }
+                                  >
+                                    {item.location}
+                                  </p>
                                   <DateRange
                                     startYear={item.startYear}
                                     endYear={item.endYear}
@@ -243,7 +318,13 @@ const PlainTemplate = () => {
                                 </div>
                               </div>
 
-                              <p className="content hyphens-auto">
+                              <p
+                                className="content hyphens-auto editable"
+                                contentEditable
+                                suppressContentEditableWarning
+                                id="description"
+                                onBlur={(e) => handleWorkExperience(e, index)}
+                              >
                                 {item.description}
                               </p>
                               <Droppable
@@ -255,6 +336,7 @@ const PlainTemplate = () => {
                                     className="list-disc ul-padding content"
                                     {...provided.droppableProps}
                                     ref={provided.innerRef}
+                                    id="keyAchievements"
                                   >
                                     {typeof item.keyAchievements === "string" &&
                                       item.keyAchievements
@@ -276,6 +358,14 @@ const PlainTemplate = () => {
                                             snapshot.isDragging &&
                                             "outline-dashed outline-2 outline-gray-400 bg-white"
                                           }`}
+                                                contentEditable
+                                                suppressContentEditableWarning
+                                                onBlur={(e) =>
+                                                  handleWorkExperienceList(
+                                                    e,
+                                                    index
+                                                  )
+                                                }
                                               >
                                                 {achievement}
                                               </li>

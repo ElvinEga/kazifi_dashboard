@@ -1,6 +1,4 @@
-import React from "react";
-
-const Language = ({ title, languages }) => {
+const Language = ({ title, languages }: { title: string; languages: [] }) => {
   return (
     languages.length > 0 && (
       <div>

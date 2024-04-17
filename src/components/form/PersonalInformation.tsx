@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { ResumeBuilderContext } from "@/components/context/ResumeBuilderContext";
 import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
-const PersonalInformation = ({}) => {
-  const { resumeData, setResumeData, handleProfilePicture, handleChange } =
+const PersonalInformation = () => {
+  const { resumeData, handleProfilePicture, handleChange } =
     useContext(ResumeBuilderContext);
 
   return (
@@ -30,7 +30,7 @@ const PersonalInformation = ({}) => {
             placeholder="Full Name"
             name="position"
             className="pi"
-            value={resumeData.position}
+            value={resumeData?.position}
             onChange={handleChange}
           />
         </div>
@@ -41,7 +41,7 @@ const PersonalInformation = ({}) => {
             placeholder="Email"
             type="email"
             name="email"
-            value={resumeData.email}
+            value={resumeData?.email}
             onChange={handleChange}
           />
         </div>
@@ -52,7 +52,7 @@ const PersonalInformation = ({}) => {
             placeholder="Phone"
             type="tel"
             name="contactInformation"
-            value={resumeData.contactInformation}
+            value={resumeData?.contactInformation}
             onChange={handleChange}
           />
         </div>
@@ -62,7 +62,7 @@ const PersonalInformation = ({}) => {
             id="address"
             placeholder="Address"
             name="address"
-            value={resumeData.address}
+            value={resumeData?.address}
             onChange={handleChange}
           />
         </div>

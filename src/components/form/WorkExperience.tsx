@@ -1,24 +1,32 @@
+//@ts-nocheck
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
 import { ResumeBuilderContext } from "@/components/context/ResumeBuilderContext";
-import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 
 const WorkExperience = () => {
   const { resumeData, setResumeData } = useContext(ResumeBuilderContext);
 
-  const handleWorkExperience = (e, index) => {
-    const newworkExperience = [...resumeData.workExperience];
+  const handleWorkExperience = (
+    e: React.ChangeEvent<HTMLInputElement>,
+    index: number
+  ) => {
+    const newworkExperience = [...resumeData!.workExperience];
+    //@ts-ignore
     newworkExperience[index][e.target.name] = e.target.value;
-    setResumeData({ ...resumeData, workExperience: newworkExperience });
+
+    if (setResumeData) {
+      setResumeData({ ...resumeData!, workExperience: newworkExperience });
+    }
   };
 
   const addWorkExperience = () => {
+    //@ts-ignore
     setResumeData({
       ...resumeData,
       workExperience: [
-        ...resumeData.workExperience,
+        ...resumeData!.workExperience,
         {
           company: "",
           position: "",
@@ -31,11 +39,13 @@ const WorkExperience = () => {
     });
   };
 
-  const removeWorkExperience = (index) => {
-    const newworkExperience = [...resumeData.workExperience];
+  const removeWorkExperience = (index: number) => {
+    const newworkExperience = [...resumeData!.workExperience];
     newworkExperience[index] = newworkExperience[newworkExperience.length - 1];
     newworkExperience.pop();
-    setResumeData({ ...resumeData, workExperience: newworkExperience });
+    if (setResumeData) {
+      setResumeData({ ...resumeData!, workExperience: newworkExperience });
+    }
   };
 
   return (
@@ -43,7 +53,7 @@ const WorkExperience = () => {
       <div className="flex items-center justify-between">
         <h3 className="text-lg font-medium">Work Experience</h3>
       </div>
-      {resumeData.workExperience.map((workExperience, index) => (
+      {resumeData?.workExperience.map((workExperience, index) => (
         <div key={index} className="f-col space-y-4">
           <Input
             type="text"
@@ -62,16 +72,14 @@ const WorkExperience = () => {
             onChange={(e) => handleWorkExperience(e, index)}
           />
           <Textarea
-            type="text"
             placeholder="Description"
             name="description"
             className="w-full other-input h-32"
             value={workExperience.description}
-            maxLength="250"
+            maxLength={250}
             onChange={(e) => handleWorkExperience(e, index)}
           />
           <Textarea
-            type="text"
             placeholder="Key Achievements"
             name="keyAchievements"
             className="w-full other-input h-40"
@@ -99,7 +107,7 @@ const WorkExperience = () => {
         </div>
       ))}
       <FormButton
-        size={resumeData.workExperience.length}
+        size={resumeData?.workExperience.length || 0}
         add={addWorkExperience}
         remove={removeWorkExperience}
       />

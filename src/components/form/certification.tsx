@@ -1,3 +1,4 @@
+//@ts-nocheck
 import FormButton from "./FormButton";
 import React, { useContext } from "react";
 import { Input } from "@/components/ui/input";
@@ -20,7 +21,7 @@ const Certification = () => {
     });
   };
 
-  const removeSkill = (index) => {
+  const removeSkill = () => {
     const newSkills = [...resumeData[skillType]];
     newSkills.splice(-1, 1);
     setResumeData({ ...resumeData, [skillType]: newSkills });

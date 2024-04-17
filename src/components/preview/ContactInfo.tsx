@@ -1,6 +1,17 @@
 import React from "react";
 
-const ContactInfo = ({
+interface ContactInfoProps {
+  mainclass: string;
+  linkclass: string;
+  teldata: string;
+  emaildata: string;
+  addressdata: string;
+  telicon: React.ReactNode;
+  emailicon: React.ReactNode;
+  addressicon: React.ReactNode;
+}
+
+const ContactInfo: React.FC<ContactInfoProps> = ({
   mainclass,
   linkclass,
   teldata,

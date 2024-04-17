@@ -1,16 +1,12 @@
 // ResumeBuilderContext.tsx
 import React, { createContext, useState } from "react";
-import DefaultResumeData from "../../data/DefaultResumeData";
+import DefaultResumeData, { ResumeData } from "../../data/DefaultResumeData";
 import WebFont from "webfontloader";
 
 interface FontOption {
   value: string;
   label: string;
   fontFamily: string;
-}
-
-interface ResumeData {
-  // Define the structure of resume data here
 }
 
 interface ResumeBuilderContextProps {
@@ -29,6 +25,7 @@ interface ResumeBuilderContextProps {
   handleFontChange: (value: string) => void;
   handleProfilePicture: (e: React.ChangeEvent<HTMLInputElement>) => void;
   handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  handleContentChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   fontOptions: FontOption[];
 }
 
@@ -36,7 +33,9 @@ export const ResumeBuilderContext = createContext<
   Partial<ResumeBuilderContextProps>
 >({});
 
-export const ResumeBuilderProvider: React.FC = ({ children }) => {
+export const ResumeBuilderProvider: React.FC<{ children: React.ReactNode }> = ({
+  children,
+}) => {
   const [resumeData, setResumeData] = useState<ResumeData>(DefaultResumeData);
   const [selectedTemplate, setSelectedTemplate] = useState<number | 1>(1);
   const [formClose, setFormClose] = useState(false);
@@ -85,6 +84,11 @@ export const ResumeBuilderProvider: React.FC = ({ children }) => {
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setResumeData({ ...resumeData, [e.target.name]: e.target.value });
+    console.log(resumeData);
+  };
+
+  const handleContentChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setResumeData({ ...resumeData, [e.target.id]: e.target.textContent });
     console.log(resumeData);
   };
 
@@ -149,7 +153,6 @@ export const ResumeBuilderProvider: React.FC = ({ children }) => {
     { value: "Ubuntu", label: "Ubuntu", fontFamily: "Ubuntu" },
     // Add more font options here
   ];
-  // Include any additional context values or functions needed
 
   return (
     <ResumeBuilderContext.Provider
@@ -170,6 +173,7 @@ export const ResumeBuilderProvider: React.FC = ({ children }) => {
         handleFontChange,
         handleProfilePicture,
         handleChange,
+        handleContentChange,
       }}
     >
       {children}

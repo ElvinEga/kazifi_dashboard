@@ -6,7 +6,6 @@ import { DashboardLayout } from "./pages/DashboardLayout";
 import { Login } from "./pages/Login";
 import { Signup } from "./pages/Signup";
 import { LostPassword } from "./pages/LostPassword";
-import { ResumeScanner } from "./pages/ResumeScanner";
 import { ScannerResults } from "./pages/ScannerResults";
 import { JobTracker } from "./pages/JobTracker";
 import { ResumeBuilder } from "./pages/ResumeBuilder";

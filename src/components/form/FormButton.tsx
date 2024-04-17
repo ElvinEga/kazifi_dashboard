@@ -1,8 +1,11 @@
-import React from "react";
 import { Button } from "@/components/ui/button";
 import { CirclePlus, CircleMinus } from "lucide-react";
-
-const FormButton = ({ size, remove, add }) => {
+type FormButtonProps = {
+  size: number;
+  remove: () => void;
+  add: () => void;
+};
+const FormButton = ({ size, remove, add }: FormButtonProps) => {
   return (
     <div className="flex-wrap-gap-2 space-x-2 mb-2">
       <Button variant="secondary" type="button" onClick={add} aria-label="Add">
